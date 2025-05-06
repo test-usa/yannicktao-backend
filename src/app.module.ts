@@ -11,10 +11,10 @@ import { AdminModule } from './main/admin/admin.module';
 import { EngineerModule } from './main/engineer/engineer.module';
 import { CustomerModule } from './main/customer/customer.module';
 import { UserModule } from './main/user/user.module';
-import { AuthModule } from './main/auth/auth.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [AuthModule, UserModule, CustomerModule, EngineerModule, AdminModule, ConversationModule, MessageModule, FeedbackModule, ServiceModule, ProgressModule],
+  imports: [MongooseModule.forRoot(process.env.MONGODB_URI as string), AuthModule, UserModule, CustomerModule, EngineerModule, AdminModule, ConversationModule, MessageModule, FeedbackModule, ServiceModule, ProgressModule],
   controllers: [AppController],
   providers: [AppService],
 })
